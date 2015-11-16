@@ -31,13 +31,6 @@ export const inc = defn(
 );
 
 /*
-  php function getenv() to retrieve an env variable
-*/
-export function getenv (key) {
-  return process.env[key];
-}
-
-/*
   Negates a function
 
   Usage:
