@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GuillaumeBadi/Muse/issues"
   },
-  "homepage": "https://github.com/GuillaumeBadi/Muse#readme"
+  "homepage": "https://github.com/GuillaumeBadi/Muse#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
