@@ -24,18 +24,16 @@ export function defn (...fns) {
 
 /*
   Increment a value
+
+  Usage:
+
+    inc(3); // => 4
+    inc(2, 4); // => 6
 */
 export const inc = defn(
   (value) => inc(value, 1),
   (value, step) => value + 1
 );
-
-/*
-  php function getenv() to retrieve an env variable
-*/
-export function getenv (key) {
-  return process.env[key];
-}
 
 /*
   Negates a function
@@ -53,6 +51,10 @@ export function complement (fn) {
 
 /*
   Yields a range from `min` to `max` by `step`
+
+  Usage:
+
+    [...range(0, 10)] // => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 */
 export function* range (min = 0, max = Infinity, step = 1) {
   for (let i = min; i < max; i += step) {
@@ -61,9 +63,11 @@ export function* range (min = 0, max = Infinity, step = 1) {
 }
 
 /*
-  Takes an array `array` [1, 2, null, 3, null]
-  and a new array 'nArray' [3, 5]
-  and returns an final array [1, 2, 3, 3, 5]
+  Takes an array `array` and a new array 'nArray'
+  and returns a final array filled with the new values
+
+  Usage:
+    fillArray([3, 5], [1, 2, null, 3, null]) // => [1, 2, 3, 3, 5]
 */
 function fillArray (nArray, array) {
   let i = 0;
@@ -71,9 +75,18 @@ function fillArray (nArray, array) {
 }
 
 /*
-  Take a function fn and an array of args [1, null, 4]
+  Take a function fn and an array of args with empty spaces
   and returns a partial function `g` that take a single arg
-  => g(3) = fn(1, 3, 4)
+
+  Usage:
+    let add = (a, b) => a + b;
+    let rgb = (r, g. b) => [r, g, b];
+
+    let add3 = partial(add, 3)
+    let varyGreen = partial(rgb, 4, null, 5);
+
+    varyGreen(4) // => rgb(4, 4, 5);
+
 */
 export default function partial (fn, ...args) {
   return (...nArgs) => fn.apply(null, fillArray(nArgs, args));
