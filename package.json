@@ -1,0 +1,19 @@
+{
+  "name": "muse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuillaumeBadi/Muse.git"
+  },
+  "author": "Guillaume Badi <gbadi@mailjet.com> (https://github.com/GuillaumeBadi)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuillaumeBadi/Muse/issues"
+  },
+  "homepage": "https://github.com/GuillaumeBadi/Muse#readme"
+}
