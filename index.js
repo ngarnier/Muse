@@ -89,19 +89,6 @@ export function defn (...fns) {
 }
 
 /*
-  Increment a value
-
-  Usage:
-
-    inc(3); // => 4
-    inc(2, 4); // => 6
-*/
-export const inc = defn(
-  (value) => inc(value, 1),
-  (value, step) => value + 1
-);
-
-/*
   Negates a function
 
   Usage:
