@@ -1,5 +1,7 @@
 ![](/assets/logo.png)
 
+![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)
+
 ## API
 
 ### `map`
