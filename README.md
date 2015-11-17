@@ -1,6 +1,10 @@
 ![](/assets/logo.png)
 
-<<<<<<< HEAD
+
+![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)
+![Current Version](https://img.shields.io/badge/version-0.0.1-green.svg)
+
+
 ## Getting started
 
 ``` javascript
@@ -13,10 +17,6 @@ import {
 } from 'muse';
 
 ```
-=======
-![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)
-![Current Version](https://img.shields.io/badge/version-0.0.1-green.svg)
->>>>>>> 9e228966d99b2254164289d85a857572c28cd447
 
 ## API
 
