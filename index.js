@@ -1,3 +1,27 @@
+/*
+
+Copyright (c) 2015 Guillaume Badi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+
 
 /*
   Higher order map
@@ -39,19 +63,6 @@ export function reduce (array, fn, init = 0) {
 */
 export function forEach (array, action) {
   return array.forEach(action);
-}
-
-/*
-  Higher order object getter
-
-  Usage:
-    [{name: guillaume, age: 21}, {name: donald, age: 23}]
-      .map(partial(get, null, 'name'))
-
-    // => [guillaume, donald]
-*/
-export function get (obj, key) {
-  return obj[key];
 }
 
 /*
@@ -99,9 +110,7 @@ export const inc = defn(
   isNumber(1) // => true
 */
 export function complement (fn) {
-  return function () {
-    return !(fn.apply({}, arguments))
-  }
+  return () => !(fn.apply({}, arguments))
 }
 
 /*
@@ -118,12 +127,35 @@ export function* range (min = 0, max = Infinity, step = 1) {
 }
 
 /*
+  Performs an action n times
+
+  Usage:
+    times(3, () => console.log ('Hello'))
+*/
+export function times (n, action) {
+  return map([...range(0, n)], i => action(i));
+}
+
+/*
+  Flatten an array
+
+  Usage:
+    flatten([1, 2, 3, [4, [5, [6, [7, [8, 9]]]]]])
+
+    // => [1, 2, 3, 4, 5, 6, 7, 8, 9]
+*/
+export function flatten (v) {
+  return v.constructor == Array ?
+    Array.prototype.concat.apply([], map(v, flatten)) : [v];
+}
+
+/*
   Take a function fn and an array of args with empty spaces
   and returns a partial function `g` that take a single arg
 
   Usage:
     let add = (a, b) => a + b;
-    let rgb = (r, g. b) => [r, g, b];
+    let rgb = (r, g, b) => [r, g, b];
 
     let add3 = partial(add, 3)
     let varyGreen = partial(rgb, 4, null, 5);
@@ -141,7 +173,7 @@ export default function partial (fn, ...args) {
   */
   function fillArray (nArray, array) {
     let i = 0;
-    return array.map((e) => !e ? nArray[i++] : e);
+    return map(array, (e) => !e ? nArray[i++] : e);
   }
   return (...nArgs) => fn.apply(null, fillArray(nArgs, args));
 }
