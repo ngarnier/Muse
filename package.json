@@ -1,6 +1,6 @@
 {
-  "name": "muse",
-  "version": "1.0.0",
+  "name": "musejs",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/muse.js",
   "scripts": {
