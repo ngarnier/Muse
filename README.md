@@ -1,5 +1,18 @@
 ![](/assets/logo.png)
 
+## Getting started
+
+``` javascript
+
+import {
+  map,
+  filter,
+  defn,
+  ...
+} from 'muse';
+
+```
+
 ## API
 
 ### `map`
