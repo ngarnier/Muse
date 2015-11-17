@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/muse.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/GuillaumeBadi/Muse#readme",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "babel-preset-es2015": "^6.1.4",
+    "gulp-babel": "^6.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "mocha": "^2.3.4"
   }
 }
