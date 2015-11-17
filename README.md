@@ -16,7 +16,7 @@ import {
   filter,
   defn,
   ...
-} from 'muse';
+} from 'musejs';
 
 ```
 

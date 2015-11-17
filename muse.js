@@ -85,7 +85,18 @@ export function defn (...fns) {
     final[fn.length] = fn
     return final
   }, {})
-  return (...args) => fns[args.length].apply({}, args)
+  return (...args) => console.log (args.length) || fns[args.length].apply({}, args)
+}
+
+/*
+  Increment a value
+
+  Usage:
+    inc(2)
+    // => 3
+*/
+export function inc (v) {
+  return v + 1;
 }
 
 /*
@@ -150,7 +161,7 @@ export function flatten (v) {
     varyGreen(4) // => rgb(4, 4, 5);
 
 */
-export default function partial (fn, ...args) {
+export function partial (fn, ...args) {
   /*
     Takes an array `array` and a new array 'nArray'
     and returns a final array filled with the new values
