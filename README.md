@@ -1,6 +1,7 @@
 ![](/assets/logo.png)
 
 ![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)
+![Current Version](https://img.shields.io/badge/version-0.0.1-green.svg)
 
 ## API
 
