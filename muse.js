@@ -25,6 +25,12 @@ THE SOFTWARE.
 import assert from 'assert';
 
 /*
+  Basic Math functions
+*/
+const add = (a, b) => a + b;
+const mult = (a, b) => a * b;
+
+/*
   Higher order reduce
 
   Usage:
@@ -141,6 +147,64 @@ export function dotProduct (v1, v2) {
 export function addMatrix (m1, m2) {
   return map(m1, (e, i) =>
     isArray(e) ? addMatrix(e, m2[i]) : e + m2[i]);
+}
+
+/*
+  Returns a matrix row as a vector
+
+  Usage:
+    getRow(
+      [[1, 1, 1, 1, 1],
+       [2, 2, 2, 2, 2],
+       [1, 1, 1, 1, 1],
+       [1, 1, 1, 1, 1]],
+      1
+    )
+    // => [2, 2, 2, 2, 2]
+*/
+export function getRow (matrix, index) {
+  return matrix[index];
+}
+
+/*
+  Returns a matrix column as a vector
+
+  Usage:
+    getColumn(
+      [[2, 1, 1, 1, 1],
+       [2, 1, 1, 1, 1],
+       [2, 1, 1, 1, 1],
+       [2, 1, 1, 1, 1]],
+       0
+    )
+    // => [2, 2, 2, 2, 2]
+*/
+export function getColumn (matrix, index) {
+  return map(matrix, i => i[index]);
+}
+
+/*
+  Performs a matricex multiplication
+
+  Usage:
+    const m1 = [
+      [1, 2, 3],
+      [4, 5, 6]
+    ];
+    const m2 = [
+      [7, 8],
+      [9 , 10],
+      [11, 12]
+    ]
+    multMatrix(m1, m2)
+    // => [
+      [58, 64],
+      [139, 154]
+    ]
+*/
+export function multMatrix (m1, m2) {
+  return map(m1, row =>
+    times(m1.length, i => dotProduct(row, getColumn(m2, i))));
 }
 
 /*
