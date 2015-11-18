@@ -51,6 +51,17 @@ export function map (array, action) {
 }
 
 /*
+  Higher order reverse
+
+  Usage:
+    reverse([1, 2, 3])
+    // => [3, 2, 1]
+*/
+export function reverse (array) {
+  return array.reverse();
+}
+
+/*
   Higher order filter
 
   Usage:
@@ -205,6 +216,34 @@ export function getColumn (matrix, index) {
 export function multMatrix (m1, m2) {
   return map(m1, row =>
     times(m1.length, i => dotProduct(row, getColumn(m2, i))));
+}
+
+/*
+  Returns a matrix dimensions [rows, columns]
+
+  Usage:
+    const [rows, columns] = matrixDimensions(myMatrix);
+*/
+export function matrixDimensions (m) {
+  return [m.length, m[0].length];
+}
+
+/*
+  Transpose a matrix
+
+  Usage:
+    console.log (transpose([
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9]
+    ]))
+    // => [ [ 1, 4, 7 ],
+            [ 2, 5, 8 ],
+            [ 3, 6, 9 ] ]
+*/
+export function transpose (m) {
+  const [_, columns] = matrixDimensions(m);
+  return times(columns, i => getColumn(m, i);
 }
 
 /*
