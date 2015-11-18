@@ -19,4 +19,5 @@ let matrix = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
-let matrix2 = map(matrix, partial(map, null, inc));
+let matrix3 = map(matrix, i => map(i, inc))
+console.log (matrix3);
