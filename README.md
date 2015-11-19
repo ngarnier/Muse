@@ -14,7 +14,6 @@
 import {
   map,
   filter,
-  defn,
   ...
 } from 'musejs';
 
