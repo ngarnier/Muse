@@ -246,8 +246,6 @@ export function transpose (m) {
   return times(columns, i => getColumn(m, i));
 }
 
-console.log(transpose([[0,1,1,0]]))
-
 /*
   Pass a value to a list of function, one function at
     a time

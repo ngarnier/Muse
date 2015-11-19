@@ -20,7 +20,7 @@ import {
 
 ```
 
-## API
+## Utils
 
 ### `map`
 
@@ -55,7 +55,7 @@ reduce([1, 2, 3, 4], (i, j) => i + j);
 
 ```
 
-### `forEach`
+### `foreach`
 
 Higher order `forEach`
 
@@ -69,22 +69,25 @@ forEach([1, 2, 3, 4], i => console.log (i))
 
 ```
 
-### `defn`
+### `reverse`
 
-Define a polyvariadic function and returns a function that select the action to use depending on the number of parameters passed.
+Higher order reverse
 
 ``` javascript
 
-export const inc = defn(
-  (value) => inc(value, 1),
-  (value, step) => value + 1
-);
+reverse([1, 2, 3])
+// => [3, 2, 1]
 
-inc(2);
-inc(3, 2)
+```
 
-// => 3
-// => 5
+### `id`
+
+Return true if the value is not 0, undefined or null
+
+``` javascript
+
+filter([1, null, 4, undefined, 'Hello'], id)
+// => [1, 4, 'Hello']
 
 ```
 
@@ -148,4 +151,167 @@ let varyGreen = partial(rgb, 4, null, 5);
 varyGreen(4)
 // => rgb(4, 4, 5);
 
+```
+
+### `thread`
+
+Pass a value to a list of function, one function at a time
+
+``` javascript
+thread(
+  1,
+  i => i + 1,
+  i => i - 2
+)
+// => -1
+```
+
+### `compose`
+
+Return a function that takes a value to be threaded in a list of functions
+
+``` javascript
+
+add3AndMultiply3 = compose(add3, multiply3);
+add3AndMultiply3(3);
+// => 18
+
+```
+
+### `promisify`
+
+Transform a callback style function into a Promise style function
+
+``` javascript
+let readfile = promisify(fs.readFile)
+
+let text = readfile('./test.txt')
+text.then(console.log.bind(console))
+
+```
+
+### `isNumber`, `isArray`, `isString`, `isObject`
+
+Primitives type checking functions
+
+``` javascript
+
+isNumber('3')
+// => true
+
+isString('Hello')
+// => true
+
+isArray({name: guillaume})
+// => false
+
+```
+
+## Math
+
+### `dotProduct`
+
+Dot product between 2 vectors
+
+``` javascript
+
+dotProduct([1, 2, 3], [4, 5, 6]);
+// => 32
+
+```
+
+### `addMatrix`
+
+Matrix/vector addition
+
+``` javascript
+
+addMatrix(
+  [[1, 1, 1, 1],
+   [1, 1, 1, 1]],
+
+  [[1, 1, 1, 1],
+   [1, 1, 1, 1]]
+)
+// => [[2, 2, 2, 2], [2, 2, 2, 2]]
+
+```
+
+### `getRow`
+
+Returns a matrix row as a vector
+
+``` javascript
+
+getRow(
+  [[1, 1, 1, 1, 1],
+   [2, 2, 2, 2, 2],
+   [1, 1, 1, 1, 1],
+   [1, 1, 1, 1, 1]],
+  1
+)
+// => [2, 2, 2, 2, 2]
+
+```
+
+### `getColumn`
+
+Returns a matrix column as a vector
+
+``` javascript
+
+getColumn(
+  [[2, 1, 1, 1, 1],
+   [2, 1, 1, 1, 1],
+   [2, 1, 1, 1, 1],
+   [2, 1, 1, 1, 1]],
+   0
+)
+// => [2, 2, 2, 2, 2]
+
+```
+
+### `multMatrix`
+
+Performs a matricex multiplication
+
+``` javascript
+const m1 = [
+  [1, 2, 3],
+  [4, 5, 6]
+];
+const m2 = [
+  [7, 8],
+  [9 , 10],
+  [11, 12]
+]
+multMatrix(m1, m2)
+// => [ [58, 64],
+//      [139, 154]]
+```
+
+### `matrixDimensions`
+
+Returns a matrix dimensions [rows, columns]
+
+``` javascript
+
+const [rows, columns] = matrixDimensions(myMatrix);
+
+```
+
+### `transpose`
+
+Transpose a matrix
+
+``` javascript
+
+console.log (transpose([
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]))
+// => [   [ 1, 4, 7 ],
+//        [ 2, 5, 8 ],
+//        [ 3, 6, 9 ]   ]
 ```
