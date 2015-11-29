@@ -295,16 +295,22 @@ export function promisify(fn) {
 }
 
 /*
-  Flatten an array
+  Flatten an array or an object
 
   Usage:
     flatten([1, 2, 3, [4, [5, [6, [7, [8, 9]]]]]])
-
+    flatten({foo:1, bar:2, foobar:3, barfoo:{bar:4, foobar:{foo:5, bar:{foobar:6, foo:{bar:7, foobar:{foo:8, bar:9}}}}}})
     // => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 */
-export function flatten (v) {
+
+export function flatten = (v) => {
   return v.constructor == Array ?
-    Array.prototype.concat.apply([], map(v, flatten)) : [v];
+    Array.prototype.concat.apply([], map(v, flatten))
+    :
+    v.constructor == Object ?
+      flatten(Object.values(v))
+      :
+      v;
 }
 
 /*
