@@ -295,11 +295,12 @@ export function promisify(fn) {
 }
 
 /*
-  Flatten an array or an object
+  Flatten an array or an object (including nested arrays in objects and nested objects in arrays)
 
   Usage:
     flatten([1, 2, 3, [4, [5, [6, [7, [8, 9]]]]]])
     flatten({foo:1, bar:2, foobar:3, barfoo:{bar:4, foobar:{foo:5, bar:{foobar:6, foo:{bar:7, foobar:{foo:8, bar:9}}}}}})
+    flatten([1, 2, 3, [{i:4,b:[5,6]}, [7, [8, [9]]]]]))
     // => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 */
 
