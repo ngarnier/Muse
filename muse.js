@@ -303,7 +303,7 @@ export function promisify(fn) {
     // => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 */
 
-export function flatten = (v) => {
+export function flatten(v) {
   return v.constructor == Array ?
     Array.prototype.concat.apply([], map(v, flatten))
     :
